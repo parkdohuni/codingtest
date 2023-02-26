@@ -17,14 +17,4 @@ def dfs(start):
             s.append(i)
             dfs(i+1)
             s.pop()
-        # if visited[i]:
-        #     continue
-        # visited[i] = True
-        # s.append(i)
-        # dfs(i+1)
-        # s.pop()
-        # #print(s)
-        # #print(visited)
-        # visited[i] = False
-
 dfs(1)
