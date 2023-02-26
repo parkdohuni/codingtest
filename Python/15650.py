@@ -7,19 +7,24 @@ n, m = map(int,input().split())
 s = []
 visited = [False] * (n+1)
 
-def dfs():
+def dfs(start):
     if len(s) == m:
         print(' '.join(map(str, s)))
         return
-    for i in range(1, n+1):
-        if visited[i]:
-            continue
-        visited[i] = True
-        s.append(i)
-        dfs()
-        s.pop()
-        #print(s)
-        #print(visited)
-        visited[i] = False
+    
+    for i in range(start, n+1):
+        if i not in s:
+            s.append(i)
+            dfs(i+1)
+            s.pop()
+        # if visited[i]:
+        #     continue
+        # visited[i] = True
+        # s.append(i)
+        # dfs(i+1)
+        # s.pop()
+        # #print(s)
+        # #print(visited)
+        # visited[i] = False
 
-dfs()
+dfs(1)
