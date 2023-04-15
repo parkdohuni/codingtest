@@ -7,11 +7,12 @@ b = int(input())
 c = int(input())
 multi = a*b*c
 ans = [0]*10
-
+# print(multi)
 while(1):
-    save = multi % 10
+    save = int(multi % 10)
     ans[save] += 1
-    multi = multi / int(10)
+    multi = int(multi / 10)
     if(multi == 0):
         break
-print(ans, end="\n")
+for i in ans:
+    print(i, end="\n")
