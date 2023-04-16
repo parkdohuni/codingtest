@@ -1,13 +1,5 @@
 #1919번 애너그램 만들기
 import sys
-# input = sys.stdin.readline
-
-# a = input().rstrip()
-# b = input().rstrip()
-# ans = 0
-
-# a = sorted(a)
-# b = sorted(b)
 
 a = [0]*26
 b = a[:]
