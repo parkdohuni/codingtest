@@ -23,4 +23,3 @@ for _ in range(n):
 
 st1.extend(reversed(st2))
 print(''.join(st1))
-print(st1)
