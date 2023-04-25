@@ -9,11 +9,11 @@ for _ in range(n):
     right = []
     for i in arr:
         if i == ">":
-            if left:
-                right.append(left.pop())
-        elif i == "<":
             if right:
                 left.append(right.pop())
+        elif i == "<":
+            if left:
+                right.append(left.pop())
         elif i == "-":
             if left:
                 left.pop()
