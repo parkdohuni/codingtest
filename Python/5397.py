@@ -2,11 +2,22 @@ import sys
 
 n = int(sys.stdin.readline())
 
-arr = []
-ans = []
 
 for _ in range(n):
     arr = input()
-    
-
-print(arr)
+    left = []
+    right = []
+    for i in arr:
+        if i == ">":
+            if left:
+                right.append(left.pop())
+        elif i == "<":
+            if right:
+                left.append(right.pop())
+        elif i == "-":
+            if left:
+                left.pop()
+        else:
+            left.append(i)
+    print("".join(left)+"".join(reversed(right)))
+            
