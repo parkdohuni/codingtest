@@ -12,4 +12,3 @@ for i in range(n):
     stack.append(i)
 
 print(*ans)
-print(ans)
