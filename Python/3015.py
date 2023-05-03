@@ -2,7 +2,7 @@ import sys
 
 n = int(sys.stdin.readline())
 
-arr = [int(sys.stdin.readline()) for _ in range(n)]
+arr = [int(sys.stdin.readline().rstrip()) for _ in range(n)]
     
 stack = []
 ans = 0
@@ -20,10 +20,10 @@ for i in arr:
         ans += cnt
         
         if stack: ans += 1
-        stack.append([i, cnt + 1])
+        stack.append((i, cnt + 1))
     #키가 작을 때
     else:
-        stack.append([i, cnt])
+        stack.append((i, 1))
         ans += 1
 
 print(ans)
