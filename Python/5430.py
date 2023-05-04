@@ -8,12 +8,13 @@ for _ in range(t):
     queue = deque(x)
     rev = 0
     flag = 0
-    
+    if n == 0:
+        queue = []
     for i in p:
         if i == 'R':
             rev += 1
         elif i == 'D':
-            if len(queue) < 1:
+            if len(queue) == 0:
                 flag = 1
                 print("error")
                 break
