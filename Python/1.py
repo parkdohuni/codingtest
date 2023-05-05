@@ -1,39 +1,38 @@
-bracket = list(input())
+import sys
+from collections import deque
 
-stack = []
-answer = 0
-tmp = 1
+def bfs(x, y):
+    graph[x][y] = 0
+    w = 1
+    dx = [1, -1, 0, 0]
+    dy = [0, 0, 1, -1]
+    q = deque()
+    q.append([x, y])
+    
+    while q:
+        x, y = q.popleft()
+        for i in range(4):
+            nx = dx[i] + x
+            ny = dy[i] + y
+            if 0 <= nx < n and 0 <= ny < m and graph[nx][ny] == 1:
+                q.append([nx, ny])
+                w += 1
+                graph[nx][ny] = 0
+    
+    return w
 
-for i in range(len(bracket)):
+n, m = map(int, sys.stdin.readline().split())
 
-    if bracket[i] == "(":
-        stack.append(bracket[i])
-        tmp *= 2
+graph = [list(map(int, sys.stdin.readline().split()) for _ in range(n))]
 
-    elif bracket[i] == "[":
-        stack.append(bracket[i])
-        tmp *= 3
+cnt = 0
+ans = 0
 
-    elif bracket[i] == ")":
-        if not stack or stack[-1] == "[":
-            answer = 0
-            break
-        if bracket[i-1] == "(":
-            answer += tmp
-        stack.pop()
-        tmp //= 2
-
-    else:
-        if not stack or stack[-1] == "(":
-            answer = 0
-            break
-        if bracket[i-1] == "[":
-            answer += tmp
-
-        stack.pop()
-        tmp //= 3
-
-if stack:
-    print(0)
-else:
-    print(answer)
+for i in range(n):
+    for j in range(j):
+        if graph[i][j] == 1:
+            cnt += 1
+            ans = max(bfs(i, j), ans)
+            
+print(cnt)
+print(ans)
