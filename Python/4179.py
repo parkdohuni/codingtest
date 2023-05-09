@@ -9,8 +9,10 @@ def bfs():
         for j in range(c):
             if graph[i][j] == 'J':
                 q.append([i, j])
+                j_visited[i][j] = 1
             elif graph[i][j] == 'F':
                 f.append([i, j])
+                f_visited[i][j] = 1
                 
     dx = [1, -1, 0, 0]
     dy = [0, 0, 1, -1]
@@ -36,7 +38,7 @@ def bfs():
                         j_visited[nx][ny] = j_visited[x][y] + 1
                         q.append([nx, ny])
             else:
-                return j_visited[x][y] + 1
+                return j_visited[x][y]
     
     return 'IMPOSSIBLE'
         
