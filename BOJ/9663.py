@@ -1,34 +1,28 @@
-# N-Queen
-# N-Queen 문제는 크기가 N × N인 체스판 위에 퀸 N개를 서로 공격할 수 없게 놓는 문제이다.
-# N이 주어졌을 때, 퀸을 놓는 방법의 수를 구하는 프로그램을 작성하시오.
 import sys
 
-n = int(sys.stdin.readline().rstrip())
-
+n = int(sys.stdin.readline())
+visited1 = [0] * n
+visited2 = [0] * (n + (n - 1))
+visited3 = [0] * (n + (n - 1))
 ans = 0
-row = [0] * n
 
 
-def is_promising(x):
-    for i in range(x):
-        if row[x] == row[i] or abs(row[x] - row[i]) == abs(x - i):
-            return False
-
-    return True
-
-
-def n_queens(x):
+def queen(a):
     global ans
-    if x == n:
+    if a == n:
         ans += 1
+        return
+    for i in range(n):
+        if visited1[i] or visited2[i + a] or visited3[a - i + n - 1]:
+            continue
+        visited1[i] = 1
+        visited2[i + a] = 1
+        visited3[a - i + n - 1] = 1
+        queen(a + 1)
+        visited1[i] = 0
+        visited2[i + a] = 0
+        visited3[a - i + n - 1] = 0
 
-    else:
-        for i in range(n):
-            # [x, i]에 퀸을 놓겠다.
-            row[x] = i
-            if is_promising(x):
-                n_queens(x + 1)
 
-
-n_queens(0)
+queen(0)
 print(ans)
