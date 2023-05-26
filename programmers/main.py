@@ -1,7 +1,7 @@
 from collections import deque
 
 n = int(input())
-
+ans = []
 arr = [list(map(int, input().split())) for _ in range(n)]
 visited = [[0] * n for _ in range(n)]
 
@@ -30,4 +30,6 @@ for i in range(n):
     for j in range(n):
         if arr[i][j] == 1 and visited[i][j] == 0:
             q.append([i, j])
-            print(bfs())
+            ans.append(str(bfs()))
+
+print(" ".join(ans))
