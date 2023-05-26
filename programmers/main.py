@@ -1,16 +1,33 @@
-# This is a sample Python script.
+from collections import deque
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+n = int(input())
 
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+arr = [list(map(int, input().split())) for _ in range(n)]
+visited = [[0] * n for _ in range(n)]
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+def bfs():
+    dx = [1, -1, 0, 0]
+    dy = [0, 0, 1, -1]
+    cnt = 1
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    while q:
+        x, y = q.popleft()
+        visited[x][y] = 1
+        for i in range(4):
+            nx = dx[i] + x
+            ny = dy[i] + y
+            if 0 <= nx < n and 0 <= ny < n and visited[nx][ny] == 0 and arr[nx][ny] == 1:
+                visited[nx][ny] = 1
+                q.appendleft([nx, ny])
+                cnt += 1
+
+    return cnt
+
+
+q = deque()
+for i in range(n):
+    for j in range(n):
+        if arr[i][j] == 1 and visited[i][j] == 0:
+            q.append([i, j])
+            print(bfs())
