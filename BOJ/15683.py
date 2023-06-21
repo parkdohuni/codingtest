@@ -16,7 +16,6 @@ for x in range(n):
                 dx = [1, -1, 0, 0]
                 dy = [0, 0, 1, -1]
                 temp = 0
-                add = 0
                 nx = x
                 ny = y
                 while 1:
@@ -99,8 +98,39 @@ for x in range(n):
                         ans -= 1
         # elif arr[x][y] == 3:
 
-        # elif arr[x][y] == 4:
-            
+        elif arr[x][y] == 4:
+            for k in range(4):
+                dx = [1, -1, 0, 0]
+                dy = [0, 0, 1, -1]
+                temp = 0
+                nx = x
+                ny = y
+                while 1:
+                    nx += dx[k]
+                    ny += dy[k]
+                    if 0 <= nx < n and 0 <= ny < m:
+                        if arr[nx][ny] == 6:
+                            break
+                        else:
+                            temp += 1
+                            if temp > max:
+                                max = temp
+                                save = k
+                    else:
+                        break
+            nx = x
+            ny = y
+            while 1:
+                nx += dx[save]
+                ny += dy[save]
+                if 0 <= nx < n and 0 <= ny < m:
+                    if arr[nx][ny] == 6:
+                        break
+                    arr[nx][ny] = "#"
+                    ans -= 1
+                else:
+                    break
+
         elif arr[x][y] == 5:
             nx = 0
             ny = 0
