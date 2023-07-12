@@ -1,14 +1,14 @@
 n = int(input())
 arr = list(map(int, input().split()))
-d = [0] * n
-d[0] = 1
-
+d = [1] * n
+save = []
 for i in range(n):
     for j in range(i):
-        if i == j + 1:
-            d[i] += 1
-        if arr[i] > arr[j] :
-            d[i] += 1
-        temp = arr[j]
+        if arr[i] > arr[j]:
+            save.append(d[j])
+
+    if save:
+        d[i] = max(save) + 1
+    save = []
 
 print(max(d))
