@@ -22,6 +22,7 @@ for i in range(n):
     P[i] = y
 dp = [0 for i in range(n + 1)]
 for i in range(len(T) - 2, -1, -1):
+    # 최대 날짜 보다 작으면
     if i + T[i] <= n:
         dp[i] = max(dp[i + 1], dp[i + T[i]] + P[i])
     else:
