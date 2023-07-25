@@ -3,16 +3,14 @@ import sys
 read = sys.stdin.readline
 
 n, m = map(int, read().split())
-A = list(map(int, read().split()))
-B = list(map(int, read().split()))
+A = set(map(int, read().split()))
+B = set(map(int, read().split()))
 
-ans = []
-A_set = set(A)
-B_set = set(B)
-
-ans = list(A_set - B_set)
+ans = A - B
+ans = sorted(ans)
 print(len(ans))
-print(*ans)
+if len(ans) !=0:
+    print(*(ans))
 # for a in A:
 #     st = 0
 #     en = len(B) - 1
