@@ -12,23 +12,21 @@ def bfs():
         if subway == n:
             print(level)
             sys.exit()
-
-        for s in graph[subway]:
-            if visited[s] == False:
-                visited[s] = True
-                if s > n:
-                    q.append((s, visited, level))
+        for i in graph[subway]:
+            if not visited[i]:
+                visited[i] = True
+                if i > n:
+                    q.append((i, visited, level))
                 else:
-                    q.append((s, visited, level + 1))
+                    q.append((i, visited, level + 1))
 
 
 n, k, m = map(int, input().split())
 
 graph = [[] for _ in range(n + m + 1)]
-
 for i in range(1, m + 1):
     sub = list(map(int, input().split()))
-    graph[n + i] = sub
+    graph[n + i].append(sub)
     for s in sub:
         graph[s].append(n + i)
 
