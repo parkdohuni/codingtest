@@ -1,22 +1,23 @@
 import sys
 
-n, s = map(int, sys.stdin.readline().split())
-arr = list(map(int, sys.stdin.readline().split()))
-visited = [0] * n
-ans = 0
-add = 0
+input = sys.stdin.readline
+
+n, s = map(int, input().split())
+arr = list(map(int, input().split()))
+cnt = 0
+ans = []
 
 
-def dfs(idx, add):
-    global ans
-    if idx >= n:
-        return
-    add += arr[idx]
-    if add == s:
-        ans += 1
-    # visited[idx] = 1
-    dfs(idx + 1, add)
+def dfs(idx):
+    global cnt
+    if sum(ans) == s and len(ans) > 0:
+        cnt += 1
+
+    for i in range(idx, n):
+        ans.append(arr[i])
+        dfs(i + 1)
+        ans.pop()
 
 
 dfs(0)
-print(ans)
+print(cnt)
