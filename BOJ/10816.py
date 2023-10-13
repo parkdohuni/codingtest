@@ -24,4 +24,7 @@ for A in a:
 
 print(' '.join(str(ans[x]) if x in ans else '0' for x in b))
 
-# print(*ans, end=" ")
+# 10
+# 6 3 2 10 10 10 -10 -10 7 3
+# 8
+# 10 9 -5 2 3 4 5 -10
