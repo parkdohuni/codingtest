@@ -1,4 +1,5 @@
 import sys
+
 input = sys.stdin.readline
 n = int(input())
 a = list(map(int, input().split()))
@@ -25,5 +26,10 @@ for A in a:
         elif A > b[mid]:
             st = mid + 1
 
-for i in ans:
-    print(i, end=" ")
+print(*ans, end=" ")
+
+# 5
+# 2 4 -10 4 -9
+
+# 6
+# 1000 999 1000 999 1000 999
