@@ -17,3 +17,8 @@ for target in b:
         elif target > a[mid]:
             st = mid + 1
     print(ans)
+
+# 5
+# 4 1 5 2 3
+# 5
+# 1 3 7 9 5
