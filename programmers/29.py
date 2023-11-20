@@ -18,6 +18,7 @@ def solution(str1, str2):
 
     intersection_list = set(a) & set(b)
     union_list = set(a) | set(b)
+    print(union_list)
 
     if len(union_list) == 0:
         return 65536
@@ -26,7 +27,6 @@ def solution(str1, str2):
     union_len = sum([max(a.count(union), b.count(union)) for union in union_list])
 
     answer = floor((intersection_len / union_len) * 65536)
-
     return answer
 
 # solution("aa1+aa2", "AAAA12")
