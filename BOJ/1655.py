@@ -15,10 +15,10 @@ for _ in range(n):
         heapq.heappush(rightHeap, (data, data))
 
     if rightHeap and leftHeap[0][1] > rightHeap[0][0]:
-        min = heapq.heappop(rightHeap)[0]
-        max = heapq.heappop(leftHeap)[1]
-        heapq.heappush(leftHeap, (-min, min))
-        heapq.heappush(rightHeap, (max, max))
+        right = heapq.heappop(rightHeap)[0]
+        left = heapq.heappop(leftHeap)[1]
+        heapq.heappush(leftHeap, (-right, right))
+        heapq.heappush(rightHeap, (left, left))
 
     ans.append(leftHeap[0][1])
 
